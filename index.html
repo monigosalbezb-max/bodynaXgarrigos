@@ -1,0 +1,363 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleva(r)te | Hospes Amérigo x Pablo Garrigós</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ESTILOS GENERALES (CSS) --- */
+        :root {
+            --dark-bg: #0b0b10; /* Negro Azulado Noche */
+            --light-bg: #f4f1ea; /* Tono Piedra / Crema */
+            --gold: #c6a87c;     /* Dorado Mate */
+            --text-light: #ffffff;
+            --text-dark: #2c2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--dark-bg);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- HEADER FLOTANTE --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .logo {
+            color: white;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .btn-reservar-small {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-reservar-small:hover {
+            background-color: white;
+            color: var(--dark-bg);
+        }
+
+        /* --- HERO SECTION (PORTADA) --- */
+        .hero {
+            height: 100vh;
+            /* AQUÍ IRÍA TU FOTO DE FONDO DE LA FACHADA */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('IMG_5094.jpg'); 
+            /* Si no tienes la foto en la carpeta, se verá gris oscuro */
+            background-color: #222; 
+            background-size: cover;
+            background-position: center bottom;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; /* Muy grande */
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            margin-top: -50px; /* Para subirlo al cielo negro */
+        }
+        
+        .hero h1 span {
+            font-style: italic; /* Para la (r) si quieres destacar algo */
+        }
+
+        .hero p {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* --- SECCIÓN DEFINICIÓN (NEGRA) --- */
+        .definition-section {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .dictionary-entry {
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 1px solid var(--gold); /* Línea elegante a la izquierda */
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .word {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .phonetic {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+            font-style: italic;
+        }
+
+        .meaning {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .meaning strong {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        /* --- SECCIÓN PRODUCTO (CLARA/PIEDRA) --- */
+        .product-section {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            padding: 60px 20px 100px 20px; /* Padding extra abajo para el botón flotante */
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            margin-top: -30px; /* Efecto solapado */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--dark-bg);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 20px;
+            color: var(--gold);
+        }
+
+        .benefit-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .benefit-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .price-tag {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        .price-tag h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-bg);
+        }
+
+        /* --- BOTÓN FLOTANTE (STICKY CTA) --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            border: 1px solid var(--gold);
+            transition: transform 0.2s;
+        }
+
+        .sticky-cta:hover {
+            transform: translateX(-50%) scale(1.02);
+            background-color: black;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--light-bg);
+            text-align: center;
+            padding: 20px;
+            padding-bottom: 100px; /* Espacio para el botón flotante */
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        footer img {
+            height: 30px;
+            margin: 10px;
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+
+        /* Animación */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HOSPES AMÉRIGO</div>
+        <a href="#" class="btn-reservar-small">Reservar</a>
+    </header>
+
+    <section class="hero">
+        <h1>Tú también mereces sentirte en casa</h1>
+        <h1>pero <span>5 estrellas</span> más arriba.</h1>
+        <p>Spa Bodyna x Pablo Garrigós</p>
+        <div class="scroll-down">Descubre tu refugio ↓</div>
+    </section>
+
+    <section class="definition-section">
+        <div class="dictionary-entry">
+            <span class="word">eleva(r)te</span>
+            <span class="phonetic">[e-le-var-te] • verbo</span>
+            <p class="meaning">1. La capacidad tocar el cielo sin salir de Alicante.</p>
+            <p class="meaning">2. El arte de regalar <strong>Spa Bodyna</strong> x <strong>Pablo Garrigós</strong></p>
+        </div>
+    </section>
+    <section class="definition-section">
+        <div class="dictionary-entry">
+            <span class="word">relaja(r)te</span>
+            <span class="phonetic">[re-la-jar-te] • verbo</span>
+            <p class="meaning">1. La capacidad de sumergirte en el Spa y dejar que Alicante se detenga.</p>
+            <p class="meaning">2. El arte de regalar <strong>Spa Bodyna</strong> x <strong>Pablo Garrigós</strong></p>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <div class="container">
+            <h2 class="section-title">Tu Pack Navidad</h2>
+            
+            <ul class="benefits-list">
+                <li class="benefit-item">
+                    <span class="icon">≋</span> <div class="benefit-text">
+                        <h3>Spa Bodyna (2h)</h3>
+                        <p>Acceso exclusivo al circuito de aguas, sauna y zona relax en la azotea del antiguo convento.</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <span class="icon">💆‍♀️</span> <div class="benefit-text">
+                        <h3>Ritual Sensorial</h3>
+                        <p>30 minutos de masaje a elegir (Relajante, Balinés o Descontracturante) con aceites esenciales.</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <span class="icon">🍬</span> <div class="benefit-text">
+                        <h3>Degustación Gourmet</h3>
+                        <p>Una selección exclusiva de Turrones Pablo Garrigós Ibáñez para despertar el paladar tras el relax.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="price-tag">
+                <h4>Precio Pack Completo</h4>
+                <div class="price">100€</div>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: #666;">*Plazas limitadas por aforo</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>HOSPES AMÉRIGO ***** | PABLO GARRIGÓS IBÁÑEZ</p>
+        <br>
+        <p>© 2025 Campaña Navidad. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="#" class="sticky-cta">RESERVAR EXPERIENCIA</a>
+
+</body>
+</html>
